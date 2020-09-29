@@ -6,7 +6,7 @@ export default defineConfig({
   logo: 'https://img.alicdn.com/tfs/TB17UtINiLaK1RjSZFxXXamPFXa-606-643.png',
   navs: [
     null,
-    {
+    /* {
       title: 'FormRender',
       path: 'https://x-render.gitee.io/form-render/',
     },
@@ -18,7 +18,7 @@ export default defineConfig({
       title: '更新日志',
       path:
         'https://github.com/form-render/schema-generator/blob/master/CHANGELOG.md',
-    },
+    }, */
   ],
   outputPath: 'docs-dist',
   mode: 'site',

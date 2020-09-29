@@ -55,9 +55,9 @@ export default function Right() {
             <ItemSettings />
           </TabPane>
         )}
-        <TabPane tab="表单配置" key={showItemSettings ? '2' : '1'}>
+        {/* <TabPane tab="表单配置" key={showItemSettings ? '2' : '1'}>
           <GlobalSettings />
-        </TabPane>
+        </TabPane> */}
       </Tabs>
     </div>
   ) : (

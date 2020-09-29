@@ -43,7 +43,7 @@ const commonSettings = {
 
 const elements = [
   {
-    text: '输入框',
+    text: '单行文本输入框',
     name: 'input',
     widget: 'input',
     schema: {
@@ -97,7 +97,7 @@ const elements = [
     },
   },
   {
-    text: '大输入框',
+    text: '多行文本输入框',
     name: 'textarea',
     widget: 'textarea',
     schema: {
@@ -139,7 +139,7 @@ const elements = [
     },
   },
 
-  {
+  /* {
     text: '日期选择',
     name: 'date',
     widget: 'date',
@@ -197,7 +197,7 @@ const elements = [
         type: 'boolean',
       },
     },
-  },
+  }, */
   {
     text: '下拉单选',
     name: 'select',
@@ -261,7 +261,7 @@ const elements = [
       },
     },
   },
-  {
+  /* {
     text: '下拉多选',
     name: 'multiSelect',
     widget: 'multiSelect',
@@ -331,7 +331,7 @@ const elements = [
         },
       },
     },
-  },
+  }, */
 ];
 
 const advancedElements = [

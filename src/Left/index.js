@@ -22,7 +22,7 @@ const Left = ({ saveList, setSaveList, ...rest }) => {
           );
         })}
       </ul>
-      <p className="f6 b">复杂组件</p>
+      {/* <p className="f6 b">复杂组件</p>
       <ul className="pl0">
         {advancedElements.map((ele, idx) => {
           return (
@@ -51,7 +51,7 @@ const Left = ({ saveList, setSaveList, ...rest }) => {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
     </div>
   );
 };

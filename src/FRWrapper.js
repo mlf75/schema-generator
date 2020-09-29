@@ -255,23 +255,23 @@ function Wrapper(
                 {/* <Button className="mr2" onClick={toggleModal3}>
                   保存
                 </Button> */}
-                {_showDefaultBtns[2] !== false && (
+                {/* {_showDefaultBtns[2] !== false && (
                   <Button className="mr2" onClick={toggleModal2}>
                     导入
                   </Button>
-                )}
+                )} */}
                 {_showDefaultBtns[3] !== false && (
                   <Button type="primary" className="mr2" onClick={toggleModal}>
                     导出schema
                   </Button>
                 )}
-                {_extraBtns.map((item, idx) => {
+                {/* {_extraBtns.map((item, idx) => {
                   return (
                     <Button key={idx.toString()} className="mr2" {...item}>
                       {item.text || item.children}
                     </Button>
                   );
-                })}
+                })} */}
                 {/* <Button type="primary" className="mr2" onClick={handleSubmit}>
                   保存
                 </Button> */}
