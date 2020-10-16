@@ -10,36 +10,41 @@ const commonSettings = {
     title: '标题',
     type: 'string',
   },
+  default: {
+    title: '默认值',
+    type: 'string',
+  },
+  /*  placeholder: {
+    title: '输入提示',
+    type: 'string',
+  }, */
   description: {
     title: '说明',
     type: 'string',
   },
+  /* style: {
+    title: '元素宽度',
+    type: 'string',
+    'ui:widget': 'percentSlider',
+  }, */
   'ui:width': {
     title: '元素宽度',
     type: 'string',
     'ui:widget': 'percentSlider',
   },
-  'ui:labelWidth': {
-    title: '标签宽度',
-    description: '默认值120',
-    type: 'number',
-    'ui:widget': 'slider',
-    max: 400,
-    'ui:options': {
-      hideNumber: true,
-    },
+  'ui:hidden': {
+    title: '隐藏',
+    type: 'boolean',
   },
-  default: {
-    title: '默认值',
-    type: 'string',
+  required: {
+    title: '必填',
+    type: 'boolean',
   },
-  'ui:readonly': {
-    title: '置灰',
+  'ui:disabled': {
+    title: '禁用',
     type: 'boolean',
   },
 };
-
-// widget 用于schema中每个元素对应的右侧配置知道用哪个setting
 
 const elements = [
   {
@@ -49,49 +54,29 @@ const elements = [
     schema: {
       title: '输入框',
       type: 'string',
+      'ui:widget': 'input',
     },
     setting: {
-      'ui:options': {
-        title: '选项',
-        type: 'object',
-        'ui:labelWidth': 80,
-        properties: {
-          allowClear: {
-            title: '是否带清除按钮',
-            description: '填写内容后才会出现x哦',
-            type: 'boolean',
-          },
-          addonBefore: {
-            title: '前tab',
-            type: 'string',
-          },
-          addonAfter: {
-            title: '后tab',
-            type: 'string',
-          },
-          prefix: {
-            title: '前缀',
-            type: 'string',
-          },
-          suffix: {
-            title: '后缀',
-            type: 'string',
-          },
-        },
-      },
-      minLength: {
-        title: '最短字数',
-        type: 'number',
-      },
-      maxLength: {
-        title: '最长字数',
-        type: 'number',
-      },
       pattern: {
         title: '校验正则表达式',
         type: 'string',
         'ui:options': {
           placeholder: '填写正则表达式',
+        },
+      },
+      options: {
+        title: '选项',
+        type: 'object',
+        'ui:labelWidth': 80,
+        properties: {
+          disabledInEdit: {
+            title: '编辑时是否可用',
+            type: 'boolean',
+          },
+          showLabel: {
+            title: '编辑时是否展示标题',
+            type: 'boolean',
+          },
         },
       },
     },
@@ -103,7 +88,7 @@ const elements = [
     schema: {
       title: '编辑框',
       type: 'string',
-      format: 'textarea',
+      'ui:widget': 'textarea',
     },
     setting: {
       'ui:options': {
@@ -138,66 +123,6 @@ const elements = [
       },
     },
   },
-
-  /* {
-    text: '日期选择',
-    name: 'date',
-    widget: 'date',
-    schema: {
-      title: '日期选择',
-      type: 'string',
-      format: 'date',
-    },
-    setting: {
-      format: {
-        title: '格式',
-        type: 'string',
-        enum: ['dateTime', 'date', 'time'],
-        enumNames: ['日期时间', '日期', '时间'],
-      },
-    },
-  },
-  {
-    text: '数字输入框',
-    name: 'number',
-    widget: 'number',
-    schema: {
-      title: '数字输入框',
-      type: 'number',
-    },
-    setting: {},
-  },
-  {
-    text: '是否选择',
-    name: 'checkbox',
-    widget: 'checkbox',
-    schema: {
-      title: '是否选择',
-      type: 'boolean',
-    },
-    setting: {
-      default: {
-        title: '默认是否',
-        type: 'boolean',
-      },
-    },
-  },
-  {
-    text: '是否switch',
-    name: 'checkbox',
-    widget: 'switch',
-    schema: {
-      title: '是否选择',
-      type: 'boolean',
-      'ui:widget': 'switch',
-    },
-    setting: {
-      default: {
-        title: '默认是否',
-        type: 'boolean',
-      },
-    },
-  }, */
   {
     text: '下拉单选',
     name: 'select',
@@ -207,6 +132,7 @@ const elements = [
       type: 'string',
       enum: ['a', 'b', 'c'],
       enumNames: ['早', '中', '晚'],
+      'ui:widget': 'radio',
     },
     setting: {
       enum: {
@@ -261,77 +187,6 @@ const elements = [
       },
     },
   },
-  /* {
-    text: '下拉多选',
-    name: 'multiSelect',
-    widget: 'multiSelect',
-    schema: {
-      title: '多选',
-      description: '下拉多选',
-      type: 'array',
-      items: {
-        type: 'string',
-      },
-      enum: ['A', 'B', 'C', 'D'],
-      enumNames: ['杭州', '武汉', '湖州', '贵阳'],
-      'ui:widget': 'multiSelect',
-    },
-    setting: {
-      enum: {
-        title: '选项字段',
-        type: 'array',
-        enum: [],
-        'ui:widget': 'select',
-        'ui:options': {
-          mode: 'tags',
-        },
-      },
-      enumNames: {
-        title: '选项名称',
-        type: 'array',
-        enum: [],
-        'ui:widget': 'select',
-        'ui:options': {
-          mode: 'tags',
-        },
-      },
-    },
-  },
-  {
-    text: '点击多选',
-    name: 'checkboxes',
-    widget: 'checkboxes',
-    schema: {
-      title: '多选',
-      description: '点击多选',
-      type: 'array',
-      items: {
-        type: 'string',
-      },
-      enum: ['A', 'B', 'C', 'D'],
-      enumNames: ['杭州', '武汉', '湖州', '贵阳'],
-    },
-    setting: {
-      enum: {
-        title: '选项字段',
-        type: 'array',
-        enum: [],
-        'ui:widget': 'select',
-        'ui:options': {
-          mode: 'tags',
-        },
-      },
-      enumNames: {
-        title: '选项名称',
-        type: 'array',
-        enum: [],
-        'ui:widget': 'select',
-        'ui:options': {
-          mode: 'tags',
-        },
-      },
-    },
-  }, */
 ];
 
 const advancedElements = [
@@ -403,7 +258,7 @@ const layouts = [
     widget: 'map',
     setting: {},
   },
-  {
+  /* {
     text: '列表',
     name: 'list',
     widget: 'list',
@@ -435,7 +290,7 @@ const layouts = [
         },
       },
     },
-  },
+  }, */
 ];
 
 const saves = [
@@ -493,5 +348,7 @@ result = result.map(list =>
     setting: { ...commonSettings, ...item.setting },
   })),
 );
+
+console.log('result', result);
 
 export default result;

@@ -26,6 +26,11 @@ import FR from './FR';
 import { Modal, Input, message } from 'antd';
 import { Button } from 'antd';
 
+import { transformFromFun, transformToFun } from './customeToFr';
+
+import FromSchema from './schema';
+import ToSchema from './fr-schema';
+
 const { TextArea } = Input;
 
 function Wrapper(
@@ -87,7 +92,14 @@ function Wrapper(
     onFlattenChange(flattenWithData);
   };
 
-  const toggleModal = () => setLocal({ showModal: !local.showModal });
+  const toggleModal = () => {
+    console.log(
+      'fr displaySchemaString-------',
+      JSON.parse(displaySchemaString),
+    );
+    // console.log('displaySchemaString----', transformToFun(JSON.parse(displaySchemaString).schema));
+    setLocal({ showModal: !local.showModal });
+  };
   const toggleModal2 = () => setLocal({ showModal2: !local.showModal2 });
   const toggleModal3 = () => setLocal({ showModal3: !local.showModal3 });
 
@@ -137,11 +149,13 @@ function Wrapper(
   let displaySchema = {};
   let displaySchemaString = '';
   try {
+    debugger;
     const _schema = idToSchema(flattenWithData, '#', true);
     displaySchema = transformTo({ schema: _schema, ...rest });
     if (!isNewVersion) {
       displaySchema = newSchemaToOld(displaySchema);
     }
+    console.log('fr displaySchema', displaySchema);
     displaySchemaString = JSON.stringify(displaySchema, null, 2);
   } catch (error) {}
 
@@ -229,12 +243,17 @@ function Wrapper(
     );
   }
 
+  // console.log('transformFromFun----', transformFromFun(FromSchema))
+
+  // console.log('transformToFun----', transformToFun(ToSchema.schema))
+
   return (
     <Ctx.Provider value={setState}>
       <PropsCtx.Provider value={globalProps}>
         <InnerCtx.Provider value={store}>
           <div className="fr-wrapper">
             <Left saveList={saveList} setSaveList={setSaveList} />
+
             <div className="mid-layout pr2">
               <div className="mv2 mh1">
                 {_showDefaultBtns[0] !== false && (
@@ -280,6 +299,7 @@ function Wrapper(
                 <FR preview={preview} />
               </div>
             </div>
+
             <Right globalProps={rest} />
             <Modal
               visible={local.showModal}

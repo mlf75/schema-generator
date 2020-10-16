@@ -12,9 +12,16 @@ const Left = ({ saveList, setSaveList, ...rest }) => {
 
   return (
     <div className="left-layout w5-l w4">
-      <p className="f6 b">基础组件</p>
+      <p className="f6 b">基本组件</p>
       <ul className="pl0">
         {elements.map((ele, idx) => {
+          return (
+            <li key={idx.toString()} className="left-item">
+              <Element {...ele} {...rest} key={idx.toString()} />
+            </li>
+          );
+        })}
+        {layouts.map((ele, idx) => {
           return (
             <li key={idx.toString()} className="left-item">
               <Element {...ele} {...rest} key={idx.toString()} />
