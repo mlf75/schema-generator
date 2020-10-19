@@ -8,33 +8,22 @@ const commonSettings = {
   },
   title: {
     title: '标题',
+    description: '对输入域的简单说明，设置为空则不显示',
     type: 'string',
   },
   default: {
     title: '默认值',
+    description: '输入框的默认内容',
     type: 'string',
   },
-  /*  placeholder: {
-    title: '输入提示',
-    type: 'string',
-  }, */
   description: {
     title: '说明',
     type: 'string',
   },
-  /* style: {
-    title: '元素宽度',
-    type: 'string',
-    'ui:widget': 'percentSlider',
-  }, */
   'ui:width': {
     title: '元素宽度',
     type: 'string',
     'ui:widget': 'percentSlider',
-  },
-  'ui:hidden': {
-    title: '隐藏',
-    type: 'boolean',
   },
   required: {
     title: '必填',
@@ -64,18 +53,13 @@ const elements = [
           placeholder: '填写正则表达式',
         },
       },
-      options: {
+      'ui:options': {
         title: '选项',
         type: 'object',
-        'ui:labelWidth': 80,
         properties: {
-          disabledInEdit: {
-            title: '编辑时是否可用',
-            type: 'boolean',
-          },
-          showLabel: {
-            title: '编辑时是否展示标题',
-            type: 'boolean',
+          placeholder: {
+            title: '文本框内提示文字',
+            type: 'string',
           },
         },
       },
@@ -91,11 +75,21 @@ const elements = [
       'ui:widget': 'textarea',
     },
     setting: {
+      pattern: {
+        title: '校验正则表达式',
+        type: 'string',
+        'ui:options': {
+          placeholder: '填写正则表达式',
+        },
+      },
       'ui:options': {
         title: '选项',
         type: 'object',
-        'ui:labelWidth': 80,
         properties: {
+          placeholder: {
+            title: '文本框内提示文字',
+            type: 'string',
+          },
           autoSize: {
             title: '高度自动',
             type: 'boolean',
@@ -106,21 +100,6 @@ const elements = [
           },
         },
       },
-      minLength: {
-        title: '最短字数',
-        type: 'number',
-      },
-      maxLength: {
-        title: '最长字数',
-        type: 'number',
-      },
-      pattern: {
-        title: '校验正则表达式',
-        type: 'string',
-        'ui:options': {
-          placeholder: '填写正则表达式',
-        },
-      },
     },
   },
   {
@@ -128,11 +107,11 @@ const elements = [
     name: 'select',
     widget: 'select',
     schema: {
-      title: '单选',
+      title: '下拉单选',
       type: 'string',
       enum: ['a', 'b', 'c'],
       enumNames: ['早', '中', '晚'],
-      'ui:widget': 'radio',
+      'ui:widget': 'select',
     },
     setting: {
       enum: {
@@ -160,7 +139,7 @@ const elements = [
     name: 'radio',
     widget: 'radio',
     schema: {
-      title: '单选',
+      title: '点击单选',
       type: 'string',
       enum: ['a', 'b', 'c'],
       enumNames: ['早', '中', '晚'],

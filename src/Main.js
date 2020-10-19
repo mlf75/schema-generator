@@ -14,6 +14,9 @@ const DEFAULT_SCHEMA = {
     type: 'object',
     properties: {},
   },
+  displayType: 'row',
+  showDescIcon: true,
+  labelWidth: 120,
   uiSchema: {},
   formData: {},
 };

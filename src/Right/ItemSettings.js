@@ -41,7 +41,7 @@ export default function ItemSettings() {
     if (widgetName) {
       // const name = getKeyFromUniqueId(selected);
       const element = elements.find(e => e.widget === widgetName);
-      const schemaNow = element.setting;
+      const schemaNow = element && element.setting;
       settingSchema = {
         schema: {
           type: 'object',

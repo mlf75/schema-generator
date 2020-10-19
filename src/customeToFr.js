@@ -200,7 +200,7 @@ function getToComplexAttrs(field) {
         complexAttr['rules'] = [
           {
             pattern: field.pattern,
-            message: field.message.pattern,
+            message: field.message ? field.message.pattern : '',
           },
         ];
         break;

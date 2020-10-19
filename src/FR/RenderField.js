@@ -11,8 +11,17 @@ const RenderField = ({
   isComplex,
   children,
 }) => {
+  debugger;
   const { onItemChange, flatten } = useStore();
   const { schema, data } = item;
+
+  const uniqKey = schema['$id'];
+  const defaultValue = uniqKey
+    ? {
+        [uniqKey]: schema.default,
+      }
+    : undefined;
+
   const {
     displayType,
     showDescIcon,
@@ -22,7 +31,8 @@ const RenderField = ({
     mapping,
   } = useGlobalProps();
   const { type, title, description, required } = schema;
-  const isRequired = required && required.length > 0;
+
+  const isRequired = required;
 
   let widgetName = getWidgetName(schema, mapping);
   const customWidget = schema['ui:widget'];
@@ -77,6 +87,7 @@ const RenderField = ({
     width: schema['ui:width'],
   };
 
+  // Fragment 简写 <>....</>
   return (
     <>
       {schema.title ? (
@@ -97,6 +108,7 @@ const RenderField = ({
             >
               {title}
             </span>
+
             {description &&
               (showDescIcon ? (
                 <span className="fr-tooltip-toggle" aria-label={description}>
