@@ -100,7 +100,7 @@ const FR = ({ id = '#', preview = false }) => {
   // TODO: list 也要算进去
   if (preview) {
     return (
-      <div style={columnStyle} className={containerClass}>
+      <div style={columnStyle} className={`${containerClass} preview`}>
         <RenderField {...fieldProps}>
           {(isObj || isList) && childrenElement}
         </RenderField>

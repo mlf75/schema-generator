@@ -15,10 +15,6 @@
   margin-bottom: 24px;
 }
 
-.fr-field-object {
-  /* margin-bottom: 0; */
-}
-
 .fr-label {
   display: block;
 }
@@ -50,9 +46,46 @@
   margin: 0;
 }
 
-.fr-label-object .fr-label-title {
-  font-size: 16px;
-  color: #222;
+.fr-field.preview .fr-label-object,
+.fr-field.preview .fr-label-array {
+  padding-left: 24px;
+  height: 44px;
+  line-height: 44px;
+  margin-bottom: 20px;
+  margin: 0 0 15px;
+  border-bottom: 1px solid #f4f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.fr-field.preview .fr-label-object + .fr-content {
+  margin-top: 24px;
+}
+
+.fr-field.preview .ba {
+  border: none;
+}
+
+.fr-field.preview .fr-label-object .fr-label-title {
+  font-weight: 400;
+  position: relative;
+  font-size: 14px;
+}
+
+.fr-field .fr-label-object .fr-label-title::after {
+  display: none;
+}
+.fr-field.preview .fr-label-object .fr-label-title:before {
+  position: absolute;
+  content: '';
+  width: 4px;
+  height: 16px;
+  background-color: #ff5722;
+  left: -15px;
+  top: 50%;
+  margin-top: -9px;
 }
 
 .fr-desc {
@@ -301,4 +334,7 @@
 .fr-map {
   display: flex;
   flex-wrap: wrap;
+}
+.fr-field textarea.ant-input + span {
+  display: none;
 }
