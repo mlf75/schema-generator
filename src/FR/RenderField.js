@@ -11,7 +11,6 @@ const RenderField = ({
   isComplex,
   children,
 }) => {
-  debugger;
   const { onItemChange, flatten } = useStore();
   const { schema, data } = item;
 

@@ -125,10 +125,11 @@ export function transformFromFun(from) {
 
 // 组装自定义 form 渲染组件需要的配置项信息
 function getCustomeProperties(obj, requiredArr) {
+  debugger;
   return Object.entries(obj).map(([prop, value]) => {
     const required = requiredArr
       ? requiredArr.find(item => item === prop)
-      : undefined;
+      : value.required;
     return {
       name: prop,
       ...attrsTransformTo(value),
